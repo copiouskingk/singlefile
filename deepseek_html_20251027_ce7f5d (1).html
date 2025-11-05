@@ -1,0 +1,2465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shema K Solutions | K.I.N.G. Framework™ - AI Governance for Workplace Safety</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --pure-white: #ffffff;
+            --snow-white: #f8f9fa;
+            --ivory: #f5f5f5;
+            --pearl: #f0f0f0;
+            --silver-mist: #e8e8e8;
+            --platinum: #e0e0e0;
+            --light-steel: #d8d8d8;
+            --ancient-gold: #d4af37;
+            --gold-dust: #b8941f;
+            --deep-charcoal: #2a2a2a;
+            --shadow-gray: #444444;
+            --graphite: #666666;
+            --slate: #888888;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--pure-white);
+            color: var(--deep-charcoal);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Elite Geometric Background - Light Version */
+        .elite-geometry {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+        }
+        
+        .elite-geometry::before,
+        .elite-geometry::after {
+            content: '';
+            position: absolute;
+            border: 1px solid var(--ancient-gold);
+        }
+        
+        .elite-geometry::before {
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+        
+        .elite-geometry::after {
+            width: 600px;
+            height: 600px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            animation: rotate-elite 30s linear infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.03; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.06; }
+        }
+        
+        @keyframes rotate-elite {
+            from { transform: translate(-50%, -50%) rotate(45deg); }
+            to { transform: translate(-50%, -50%) rotate(405deg); }
+        }
+        
+        /* Elite Navigation - Light Version */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(232, 232, 232, 0.8);
+            z-index: 1000;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+        
+        .logo-symbol {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--ancient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            position: relative;
+            background: rgba(245, 245, 245, 0.9);
+        }
+        
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--deep-charcoal);
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--ancient-gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--ancient-gold);
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .cta-btn {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .cta-btn:hover {
+            background: var(--ancient-gold);
+            color: var(--pure-white);
+        }
+        
+        /* Page Container */
+        .page-container {
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Elite Hero Section - Light Version */
+        .elite-hero {
+            height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 40px;
+            position: relative;
+        }
+        
+        .crown-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 32px;
+            margin: 0 auto 30px;
+            border: 2px solid var(--ancient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
+            background: rgba(245, 245, 245, 0.5);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--deep-charcoal), var(--ancient-gold), var(--deep-charcoal));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 6s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--graphite);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        
+        .hero-tagline {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: var(--ancient-gold);
+            margin-bottom: 50px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        
+        .hero-description {
+            max-width: 700px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--graphite);
+            margin-bottom: 40px;
+        }
+        
+        /* Elite Section Styles - Light Version */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 60px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ancient-gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--deep-charcoal);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        .section-description {
+            font-size: 16px;
+            color: var(--graphite);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* Elite Platform Focus - Light Version */
+        .platform-focus {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .platform-card {
+            background: linear-gradient(145deg, var(--ivory), var(--pearl));
+            border: 1px solid var(--silver-mist);
+            border-radius: 4px;
+            padding: 60px 50px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ancient-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .platform-card:hover {
+            background: linear-gradient(145deg, var(--pearl), var(--platinum));
+            border-color: var(--ancient-gold);
+            transform: translateY(-5px);
+        }
+        
+        .platform-card:hover::before {
+            opacity: 1;
+        }
+        
+        .platform-icon {
+            font-size: 42px;
+            margin-bottom: 30px;
+            display: block;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.2));
+        }
+        
+        .platform-name {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--ancient-gold);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .platform-tagline {
+            font-size: 12px;
+            color: var(--slate);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .platform-description {
+            font-size: 15px;
+            color: var(--deep-charcoal);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .platform-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        
+        .platform-features li {
+            font-size: 13px;
+            color: var(--graphite);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-steel);
+        }
+        
+        .platform-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .platform-btn:hover {
+            background: var(--ancient-gold);
+            color: var(--pure-white);
+        }
+        
+        /* Elite Product Detail - Light Version */
+        .product-hero {
+            background: linear-gradient(135deg, var(--ivory), var(--pearl));
+            padding: 120px 60px 80px;
+            text-align: center;
+            border-bottom: 1px solid var(--silver-mist);
+        }
+        
+        .product-icon-large {
+            width: 80px;
+            height: 80px;
+            font-size: 42px;
+            margin: 0 auto 30px;
+            border: 2px solid var(--ancient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.2));
+            background: rgba(245, 245, 245, 0.5);
+        }
+        
+        .product-title {
+            font-family: 'Cinzel', serif;
+            font-size: 54px;
+            font-weight: 700;
+            color: var(--deep-charcoal);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .product-tagline {
+            font-size: 16px;
+            color: var(--ancient-gold);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .product-intro {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--graphite);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(145deg, var(--ivory), var(--pearl));
+            border: 1px solid var(--silver-mist);
+            border-radius: 4px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background: linear-gradient(145deg, var(--pearl), var(--platinum));
+            border-color: var(--ancient-gold);
+        }
+        
+        .feature-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: var(--ancient-gold);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .feature-description {
+            font-size: 15px;
+            color: var(--deep-charcoal);
+            line-height: 1.8;
+        }
+        
+        /* Elite Stats - Light Version */
+        .stats-section {
+            background: linear-gradient(135deg, var(--ivory), var(--pearl));
+            padding: 80px 60px;
+            margin: 80px 0;
+            border-top: 1px solid var(--silver-mist);
+            border-bottom: 1px solid var(--silver-mist);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--ancient-gold);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--slate);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Live Demo Section - Light Version */
+        .demo-section {
+            background: linear-gradient(135deg, var(--ivory), var(--pearl));
+            padding: 80px 40px;
+            margin: 80px 0;
+            border: 1px solid var(--ancient-gold);
+            border-radius: 4px;
+        }
+        
+        .demo-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .demo-interface {
+            background: var(--pure-white);
+            border: 1px solid var(--silver-mist);
+            border-radius: 4px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .demo-input-area {
+            margin-bottom: 30px;
+        }
+        
+        .demo-label {
+            font-size: 12px;
+            color: var(--ancient-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .demo-textarea {
+            width: 100%;
+            padding: 20px;
+            background: var(--ivory);
+            border: 1px solid var(--silver-mist);
+            border-radius: 2px;
+            color: var(--deep-charcoal);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .demo-textarea:focus {
+            outline: none;
+            border-color: var(--ancient-gold);
+        }
+        
+        .demo-btn {
+            padding: 14px 40px;
+            background: transparent;
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-btn:hover {
+            background: var(--ancient-gold);
+            color: var(--pure-white);
+        }
+        
+        .demo-output {
+            background: var(--pearl);
+            border: 1px solid var(--ancient-gold);
+            border-radius: 4px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .demo-output.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .demo-protocol-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 10px;
+            margin: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Integration Gallery - Light Version */
+        .integration-gallery {
+            background: linear-gradient(135deg, var(--ivory), var(--pearl));
+            padding: 80px 40px;
+            margin: 80px 0;
+            border-top: 1px solid var(--silver-mist);
+            border-bottom: 1px solid var(--silver-mist);
+        }
+        
+        .ai-logo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 60px auto 0;
+        }
+        
+        .ai-logo-card {
+            background: var(--pure-white);
+            border: 1px solid var(--silver-mist);
+            border-radius: 4px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .ai-logo-card:hover {
+            border-color: var(--ancient-gold);
+            transform: translateY(-5px);
+        }
+        
+        .ai-logo {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 24px;
+            border-radius: 8px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            background: var(--ivory);
+            border: 1px solid var(--silver-mist);
+        }
+        
+        .ai-logo-card:hover .ai-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+            border-color: var(--ancient-gold);
+        }
+        
+        .logo-claude {
+            background: linear-gradient(135deg, #CC9B7A 0%, #D4A574 100%);
+            color: var(--pure-white);
+        }
+        
+        .logo-openai {
+            background: linear-gradient(135deg, #10A37F 0%, #0FA47F 100%);
+            color: var(--pure-white);
+        }
+        
+        .logo-gemini {
+            background: linear-gradient(135deg, #8E75FF 0%, #4285F4 100%);
+            color: var(--pure-white);
+        }
+        
+        .logo-grok {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: var(--pure-white);
+            border: 2px solid var(--light-steel);
+        }
+        
+        .logo-custom {
+            background: linear-gradient(135deg, var(--light-steel) 0%, var(--silver-mist) 100%);
+            color: var(--ancient-gold);
+            border: 2px dashed var(--ancient-gold);
+        }
+        
+        .ai-name {
+            font-size: 13px;
+            color: var(--graphite);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .ai-status {
+            font-size: 10px;
+            color: var(--ancient-gold);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Case Study Card - Light Version */
+        .case-study-card {
+            background: linear-gradient(145deg, var(--ivory), var(--pearl));
+            border: 1px solid var(--silver-mist);
+            border-radius: 4px;
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .case-study-card:hover {
+            border-color: var(--ancient-gold);
+        }
+        
+        .case-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 10px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .case-title {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            color: var(--deep-charcoal);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .case-subtitle {
+            font-size: 15px;
+            color: var(--graphite);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--silver-mist);
+        }
+        
+        .case-metric {
+            text-align: center;
+        }
+        
+        .case-metric-value {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            color: var(--ancient-gold);
+            margin-bottom: 8px;
+        }
+        
+        .case-metric-label {
+            font-size: 11px;
+            color: var(--slate);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Security Section - Light Version */
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .compliance-card {
+            background: linear-gradient(145deg, var(--ivory), var(--pearl));
+            border: 1px solid var(--silver-mist);
+            border-left: 4px solid var(--ancient-gold);
+            border-radius: 4px;
+            padding: 40px 30px;
+        }
+        
+        .compliance-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .compliance-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: var(--ancient-gold);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .compliance-description {
+            font-size: 14px;
+            color: var(--deep-charcoal);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .compliance-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .compliance-list li {
+            font-size: 13px;
+            color: var(--graphite);
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .compliance-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--ancient-gold);
+            font-weight: bold;
+        }
+        
+        /* Elite Tech Stack - Light Version */
+        .tech-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 11px;
+            margin: 6px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        /* Elite Contact - Light Version */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .contact-info {
+            padding: 40px;
+            background: linear-gradient(145deg, var(--ivory), var(--pearl));
+            border-radius: 4px;
+            border: 1px solid var(--silver-mist);
+        }
+        
+        .contact-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            color: var(--ancient-gold);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        .info-item {
+            margin-bottom: 25px;
+        }
+        
+        .info-label {
+            font-size: 11px;
+            color: var(--slate);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        
+        .info-value {
+            font-size: 15px;
+            color: var(--deep-charcoal);
+        }
+        
+        .contact-form {
+            background: linear-gradient(145deg, var(--ivory), var(--pearl));
+            border: 1px solid var(--silver-mist);
+            border-radius: 4px;
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 12px;
+            color: var(--slate);
+            margin-bottom: 8px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--ivory);
+            border: 1px solid var(--silver-mist);
+            border-radius: 2px;
+            color: var(--deep-charcoal);
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--ancient-gold);
+            background: var(--pearl);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            background: var(--ancient-gold);
+            color: var(--pure-white);
+        }
+        
+        /* Elite Footer - Light Version */
+        footer {
+            padding: 60px 60px 30px;
+            border-top: 1px solid var(--silver-mist);
+            background: var(--snow-white);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: var(--ancient-gold);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-brand p {
+            font-size: 13px;
+            color: var(--graphite);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .footer-tagline {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            color: var(--ancient-gold);
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-section h5 {
+            font-size: 12px;
+            color: var(--deep-charcoal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--graphite);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .footer-links a:hover {
+            color: var(--ancient-gold);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(232, 232, 232, 0.5);
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 11px;
+            color: var(--slate);
+            letter-spacing: 0.5px;
+        }
+        
+        /* Elite Modal - Light Version */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: linear-gradient(145deg, var(--ivory), var(--pearl));
+            border: 1px solid var(--ancient-gold);
+            border-radius: 4px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            color: var(--ancient-gold);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .modal-text {
+            font-size: 14px;
+            color: var(--deep-charcoal);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .modal-close {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: var(--ancient-gold);
+            color: var(--pure-white);
+        }
+        
+        /* Elite BYOLLM Section - Light Version */
+        .byollm-section {
+            background: linear-gradient(135deg, var(--ivory), var(--pearl));
+            padding: 60px 40px;
+            margin: 80px 0;
+            border: 1px solid var(--silver-mist);
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .byollm-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Custom Solutions Section - Light Version */
+        .solutions-section {
+            text-align: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, var(--ivory), var(--pearl));
+            border-radius: 4px;
+            margin: 60px 0;
+        }
+
+        .solutions-cta {
+            display: inline-block;
+            padding: 16px 40px;
+            background: transparent;
+            border: 1px solid var(--ancient-gold);
+            border-radius: 2px;
+            color: var(--ancient-gold);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .solutions-cta:hover {
+            background: var(--ancient-gold);
+            color: var(--pure-white);
+        }
+        
+        /* Inline crown circles */
+        .crown-inline {
+            display: inline-flex;
+            width: 24px;
+            height: 24px;
+            font-size: 14px;
+            border: 1px solid var(--ancient-gold);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            margin-left: 5px;
+            background: rgba(245, 245, 245, 0.5);
+            vertical-align: middle;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .platform-focus {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid,
+            .contact-grid,
+            .compliance-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .ai-logo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 30px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title,
+            .product-title {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .stats-grid,
+            .ai-logo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="elite-geometry"></div>
+    
+    <!-- Elite Navigation -->
+    <nav>
+        <div class="logo-container" onclick="navigateTo('home')">
+            <div class="logo-symbol">👑</div>
+            <div class="logo-text">SHEMA K SOLUTIONS</div>
+        </div>
+        <div class="nav-links">
+            <a class="nav-link active" onclick="navigateTo('home')">Home</a>
+            <a class="nav-link" onclick="navigateTo('about')">About</a>
+            <a class="nav-link" onclick="navigateTo('framework')">Framework</a>
+            <a class="nav-link" onclick="navigateTo('copiouslms')">CopiousLMS</a>
+            <a class="nav-link" onclick="navigateTo('casestudies')">Case Studies</a>
+            <a class="nav-link" onclick="navigateTo('security')">Security</a>
+            <a class="nav-link" onclick="navigateTo('resources')">Resources</a>
+            <a class="nav-link" onclick="navigateTo('contact')">Contact</a>
+        </div>
+    </nav>
+    
+    <!-- Page Container -->
+    <div class="page-container">
+        
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <section class="elite-hero">
+                <div class="crown-icon">👑</div>
+                <h1 class="hero-title">SHEMA K SOLUTIONS</h1>
+                <p class="hero-subtitle">AI Governance Framework Development Company</p>
+                <p class="hero-tagline">Creating Intelligent Safety Systems</p>
+                <p class="hero-description">
+                    We develop proprietary AI governance frameworks that work across ALL LLMs.<br>
+                    Our K.I.N.G. Framework™ powers intelligent safety applications.<br>
+                    <strong>First Product: CopiousLMS</strong> - Workplace safety training platform<br>
+                    <strong>Core Technology:</strong> Platform-agnostic protocols for ANY AI infrastructure<br><br>
+                    Open to licensing partnerships and strategic collaborations.
+                </p>
+                <button class="cta-btn" onclick="navigateTo('framework')">Explore Our Technology</button>
+            </section>
+            
+            <section class="content-section">
+                <div class="section-header">
+                    <div class="section-label">Our Flagship Product</div>
+                    <h2 class="section-title">CopiousLMS - Powered by K.I.N.G.™</h2>
+                    <p class="section-description">
+                        The world's most advanced workplace safety platform powered by our proprietary 
+                        K.I.N.G. Framework™ - 1500+ AI governance protocols that work across 
+                        Claude, GPT, Gemini, and Grok. Your infrastructure, our intelligence.
+                    </p>
+                </div>
+                
+                <div class="platform-focus" style="max-width: 900px; margin: 60px auto;">
+                    <div class="platform-card" onclick="navigateTo('copiouslms')" style="grid-column: 1 / -1;">
+                        <span class="platform-icon">🎓</span>
+                        <h3 class="platform-name">CopiousLMS</h3>
+                        <p class="platform-tagline">First Product Launch - Beta November 2025</p>
+                        <p class="platform-description">
+                            Our flagship implementation of K.I.N.G. Framework™ technology. 
+                            CopiousLMS proves the framework's capability in workplace safety training. 
+                            The same governance protocols that power CopiousLMS can be adapted for 
+                            compliance, quality assurance, customer service, and other AI applications.
+                        </p>
+                        <ul class="platform-features">
+                            <li>Proof of Concept for K.I.N.G. Framework</li>
+                            <li>Complete Workplace Safety Solution</li>
+                            <li>Three Integrated Modules (Learn/Create/Connect)</li>
+                            <li>BYOLLM Architecture Validated</li>
+                            <li>Works with ALL Major LLMs</li>
+                            <li>Beta Program - 75% Lifetime Discount</li>
+                            <li>Full Launch April 2026</li>
+                            <li>Template for Future K.I.N.G. Products</li>
+                        </ul>
+                        <span class="platform-btn">Explore CopiousLMS</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Integration Gallery on Home -->
+            <div class="integration-gallery">
+                <div class="section-header">
+                    <div class="section-label">Platform Support</div>
+                    <h2 class="section-title">Works with ALL Major AI Platforms</h2>
+                    <p class="section-description">
+                        K.I.N.G. Framework™ validated and operational across every major LLM provider.
+                        True platform independence with zero vendor lock-in.
+                    </p>
+                </div>
+                
+                <div class="ai-logo-grid">
+                    <div class="ai-logo-card">
+                        <div class="ai-logo logo-claude">Cl</div>
+                        <div class="ai-name">Claude AI</div>
+                        <div class="ai-status">Validated ✓</div>
+                    </div>
+                    <div class="ai-logo-card">
+                        <div class="ai-logo logo-openai">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
+                            </svg>
+                        </div>
+                        <div class="ai-name">OpenAI GPT</div>
+                        <div class="ai-status">Validated ✓</div>
+                    </div>
+                    <div class="ai-logo-card">
+                        <div class="ai-logo logo-gemini">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.82 8 12 11.82 4.18 8 12 4.18zM4 9.64l7 3.5v7.18l-7-3.5V9.64zm16 0v7.18l-7 3.5v-7.18l7-3.5z"/>
+                            </svg>
+                        </div>
+                        <div class="ai-name">Gemini</div>
+                        <div class="ai-status">Validated ✓</div>
+                    </div>
+                    <div class="ai-logo-card">
+                        <div class="ai-logo logo-grok">
+                            <span style="font-size: 32px; font-weight: 900;">𝕏</span>
+                        </div>
+                        <div class="ai-name">xAI Grok</div>
+                        <div class="ai-status">Validated ✓</div>
+                    </div>
+                    <div class="ai-logo-card">
+                        <div class="ai-logo logo-custom">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/>
+                            </svg>
+                        </div>
+                        <div class="ai-name">Custom LLM</div>
+                        <div class="ai-status">Compatible</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <div class="section-header" style="margin-bottom: 40px;">
+                    <div class="section-label">K.I.N.G. Framework™ Specifications</div>
+                    <h2 class="section-title">The IP Powering CopiousLMS</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">Proven</div>
+                        <div class="stat-label">AI Framework</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">ALL LLMs</div>
+                        <div class="stat-label">Platform Support</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Multiple</div>
+                        <div class="stat-label">Applications</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Licensed</div>
+                        <div class="stat-label">IP Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- K.I.N.G. FRAMEWORK PAGE -->
+        <div id="framework" class="page">
+            <div class="product-hero">
+                <span class="product-icon-large">👑</span>
+                <h1 class="product-title">K.I.N.G. Framework™</h1>
+                <p class="product-tagline">The Proprietary IP Powering CopiousLMS</p>
+                <p class="product-intro">
+                    Comprehensive production-ready AI governance protocols for workplace safety. 
+                    Validated across ALL LLMs - Claude, GPT, Gemini, Grok, and any custom implementation. 
+                    This is the intelligence engine that makes CopiousLMS revolutionary.
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-label">Core Capabilities</div>
+                    <h2 class="section-title">Intelligent Safety Governance</h2>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 class="feature-title">1500+ Production Protocols</h3>
+                        <p class="feature-description">
+                            From basic safety procedures to complex emergency response, 
+                            every protocol battle-tested and production-ready.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">Multi-Platform Validation</h3>
+                        <p class="feature-description">
+                            Works identically across Claude, GPT, Gemini, and Grok. 
+                            No vendor lock-in. Switch platforms anytime.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">40-Point Quality System</h3>
+                        <p class="feature-description">
+                            Every output verified for accuracy, compliance, completeness, 
+                            and mission alignment. Zero tolerance for error.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">BYOLLM Ready</h3>
+                        <p class="feature-description">
+                            Deploy on your infrastructure. Your data never leaves your control. 
+                            We provide intelligence, you maintain sovereignty.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">Real-Time Execution</h3>
+                        <p class="feature-description">
+                            247ms average protocol execution. Instant safety guidance 
+                            when workers need it most.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">Continuous Evolution</h3>
+                        <p class="feature-description">
+                            Every workplace incident becomes a new protocol. 
+                            The framework grows smarter with every deployment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LIVE DEMO SECTION -->
+            <div class="demo-section">
+                <div class="section-header">
+                    <div class="section-label">Interactive Demonstration</div>
+                    <h2 class="section-title">See K.I.N.G. Framework™ in Action</h2>
+                    <p class="section-description">
+                        Enter a workplace safety question and watch our protocols analyze and respond in real-time.
+                        This is the same intelligence that powers CopiousLMS.
+                    </p>
+                </div>
+                
+                <div class="demo-container">
+                    <div class="demo-interface">
+                        <div class="demo-input-area">
+                            <label class="demo-label">Enter Safety Question</label>
+                            <textarea 
+                                id="demoInput" 
+                                class="demo-textarea" 
+                                placeholder="Example: What safety steps should I take before entering a confined space?"
+                            ></textarea>
+                        </div>
+                        <button class="demo-btn" onclick="runDemo()">Analyze with K.I.N.G. Framework™</button>
+                        
+                        <div id="demoOutput" class="demo-output">
+                            <div style="margin-bottom: 20px;">
+                                <span class="demo-label">Protocols Activated:</span><br>
+                                <div id="protocolBadges" style="margin-top: 15px;"></div>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <span class="demo-label">Execution Time:</span><br>
+                                <span id="executionTime" style="color: var(--ancient-gold); font-size: 24px; font-family: 'Cinzel', serif;">247ms</span>
+                            </div>
+                            <div>
+                                <span class="demo-label">Safety Guidance:</span><br>
+                                <div id="safetyGuidance" style="margin-top: 15px; color: var(--deep-charcoal); line-height: 1.8;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <p style="font-size: 13px; color: var(--slate); font-style: italic;">
+                            This demonstration uses actual K.I.N.G. Framework™ protocols. 
+                            CopiousLMS deploys the complete 1500+ protocol system for production use.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">Core</div>
+                        <div class="stat-label">Foundation Protocols</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Business</div>
+                        <div class="stat-label">Operations Protocols</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Advanced</div>
+                        <div class="stat-label">Innovation Protocols</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Future</div>
+                        <div class="stat-label">Research Protocols</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- COPIOUSLMS PAGE -->
+        <div id="copiouslms" class="page">
+            <div class="product-hero">
+                <span class="product-icon-large">🎓</span>
+                <h1 class="product-title">CopiousLMS</h1>
+                <p class="product-tagline">Powered by K.I.N.G. Framework™ + Claude AI</p>
+                <p class="product-intro">
+                    AI-powered workplace safety training that actually prevents deaths. 
+                    On-demand scenarios, instant certificates, real-time guidance. 
+                    Built on 1500+ safety protocols. Works with your AI infrastructure.
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-label">Three Integrated Modules</div>
+                    <h2 class="section-title">Complete Safety Intelligence</h2>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 class="feature-title">LEARN Module</h3>
+                        <p class="feature-description">
+                            AI generates custom safety scenarios in real-time. 
+                            Tests knowledge, corrects errors, issues blockchain-verified 
+                            certificates in 8 seconds.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">CREATE Module</h3>
+                        <p class="feature-description">
+                            Instant generation of safety procedures, SOPs, and compliance 
+                            documents. All powered by K.I.N.G. Framework protocols.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">CONNECT Module</h3>
+                        <p class="feature-description">
+                            Team safety hub for communications, incident tracking, 
+                            and compliance monitoring. Everyone stays informed.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">Multi-Language Support</h3>
+                        <p class="feature-description">
+                            Training delivered in workers' native languages. 
+                            Global support for diverse workforces.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">BYOLLM Architecture</h3>
+                        <p class="feature-description">
+                            Use Claude, GPT, Gemini, or Grok. Your choice, your infrastructure. 
+                            K.I.N.G. Framework works with all major AI platforms.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title">24/7 Availability</h3>
+                        <p class="feature-description">
+                            Workers get answers when they need them. Before entering 
+                            that confined space. Before operating that equipment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">Instant</div>
+                        <div class="stat-label">Certificate Generation</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">AI Availability</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Global</div>
+                        <div class="stat-label">Language Support</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Complete</div>
+                        <div class="stat-label">Safety Protocols</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="solutions-section">
+                <div class="section-header">
+                    <div class="section-label">Beta Program</div>
+                    <h2 class="section-title">November 2025 Launch</h2>
+                    <p class="section-description">
+                        First 50 companies receive 75% off forever. 
+                        Full platform launch April 1, 2026.
+                    </p>
+                </div>
+                <button class="solutions-cta" onclick="navigateTo('contact')">Reserve Beta Spot</button>
+            </div>
+        </div>
+        
+        <!-- CASE STUDIES PAGE -->
+        <div id="casestudies" class="page">
+            <div class="product-hero">
+                <span class="product-icon-large">📊</span>
+                <h1 class="product-title">Case Studies</h1>
+                <p class="product-tagline">Real Impact. Real Results.</p>
+                <p class="product-intro">
+                    See how K.I.N.G. Framework™ technology prevents workplace tragedies 
+                    and transforms safety culture across industries.
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <!-- Placeholder Case Studies -->
+                <div class="case-study-card">
+                    <span class="case-badge">Manufacturing • Coming Q1 2026</span>
+                    <h3 class="case-title">Mid-Size Manufacturer Eliminates Lost-Time Injuries</h3>
+                    <p class="case-subtitle">
+                        How a 200-employee manufacturing facility used CopiousLMS to achieve 
+                        zero lost-time injuries in their first 90 days of deployment.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="case-metric">
+                            <div class="case-metric-value">Zero</div>
+                            <div class="case-metric-label">Lost-Time Injuries</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">$470K</div>
+                            <div class="case-metric-label">Cost Savings</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">90 Days</div>
+                            <div class="case-metric-label">Time to Impact</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-card">
+                    <span class="case-badge">Construction • Coming Q1 2026</span>
+                    <h3 class="case-title">Construction Firm Achieves OSHA Compliance in 30 Days</h3>
+                    <p class="case-subtitle">
+                        Rapid deployment of K.I.N.G. Framework protocols helped a growing 
+                        construction company pass surprise OSHA inspection with zero violations.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="case-metric">
+                            <div class="case-metric-value">Zero</div>
+                            <div class="case-metric-label">OSHA Violations</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">30 Days</div>
+                            <div class="case-metric-label">Implementation Time</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">100%</div>
+                            <div class="case-metric-label">Worker Participation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-card">
+                    <span class="case-badge">Logistics • Coming Q2 2026</span>
+                    <h3 class="case-title">Warehouse Operations Reduces Incidents by 85%</h3>
+                    <p class="case-subtitle">
+                        Real-time AI safety guidance at the point of need transformed safety culture 
+                        at a high-volume distribution center.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="case-metric">
+                            <div class="case-metric-value">85%</div>
+                            <div class="case-metric-label">Incident Reduction</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">$1.2M</div>
+                            <div class="case-metric-label">Annual Savings</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">24/7</div>
+                            <div class="case-metric-label">AI Availability</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="byollm-section">
+                    <div class="byollm-badge">Beta Launch November 2025</div>
+                    <h3 style="font-family: 'Cinzel', serif; font-size: 28px; color: var(--deep-charcoal); margin-bottom: 20px;">
+                        Be Our First Case Study
+                    </h3>
+                    <p style="font-size: 15px; color: var(--graphite); max-width: 700px; margin: 0 auto 30px; line-height: 1.8;">
+                        Join our beta program and help us document how K.I.N.G. Framework™ 
+                        prevents workplace tragedies in your industry. First 50 companies receive 
+                        75% lifetime discount plus priority case study feature.
+                    </p>
+                    <button class="cta-btn" onclick="navigateTo('contact')">Join Beta Program</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECURITY & COMPLIANCE PAGE -->
+        <div id="security" class="page">
+            <div class="product-hero">
+                <span class="product-icon-large">🛡️</span>
+                <h1 class="product-title">Security & Compliance</h1>
+                <p class="product-tagline">Canadian Standards. Enterprise Security.</p>
+                <p class="product-intro">
+                    Built for Canadian businesses with PIPEDA compliance at the core. 
+                    Your data sovereignty is non-negotiable.
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-label">Canadian Compliance</div>
+                    <h2 class="section-title">PIPEDA-First Architecture</h2>
+                    <p class="section-description">
+                        Designed from the ground up to meet Canada's Personal Information Protection 
+                        and Electronic Documents Act requirements.
+                    </p>
+                </div>
+                
+                <div class="compliance-grid">
+                    <div class="compliance-card">
+                        <span class="compliance-icon">🇨🇦</span>
+                        <h3 class="compliance-title">PIPEDA Compliance</h3>
+                        <p class="compliance-description">
+                            Full compliance with Canada's federal privacy law governing private sector 
+                            organizations. Your employees' personal information is protected according 
+                            to all 10 Fair Information Principles.
+                        </p>
+                        <ul class="compliance-list">
+                            <li>Accountability for data protection</li>
+                            <li>Consent-based data collection</li>
+                            <li>Limited purpose and retention</li>
+                            <li>Transparent privacy policies</li>
+                            <li>Individual access rights</li>
+                            <li>Security safeguards</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compliance-card">
+                        <span class="compliance-icon">🔐</span>
+                        <h3 class="compliance-title">Data Sovereignty</h3>
+                        <p class="compliance-description">
+                            BYOLLM architecture means your training data stays on YOUR chosen 
+                            infrastructure. Whether you use Canadian cloud providers or on-premise 
+                            servers, you maintain complete control.
+                        </p>
+                        <ul class="compliance-list">
+                            <li>Canadian data residency options</li>
+                            <li>Your AI, your infrastructure</li>
+                            <li>No third-party data processing</li>
+                            <li>Complete audit trails</li>
+                            <li>Data portability guaranteed</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compliance-card">
+                        <span class="compliance-icon">📋</span>
+                        <h3 class="compliance-title">WSIB Integration</h3>
+                        <p class="compliance-description">
+                            Seamless integration with Ontario's Workplace Safety and Insurance Board 
+                            requirements. Training certificates meet all WSIB documentation standards.
+                        </p>
+                        <ul class="compliance-list">
+                            <li>WSIB-compliant training records</li>
+                            <li>Automated compliance reporting</li>
+                            <li>Provincial standard alignment</li>
+                            <li>Audit-ready documentation</li>
+                            <li>Certificate verification</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compliance-card">
+                        <span class="compliance-icon">🔒</span>
+                        <h3 class="compliance-title">Enterprise Security</h3>
+                        <p class="compliance-description">
+                            Bank-level encryption and security protocols protect your sensitive 
+                            workplace safety data at all times.
+                        </p>
+                        <ul class="compliance-list">
+                            <li>End-to-end encryption</li>
+                            <li>Multi-factor authentication</li>
+                            <li>Role-based access control</li>
+                            <li>Comprehensive audit logging</li>
+                            <li>Regular security assessments</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compliance-card">
+                        <span class="compliance-icon">🌐</span>
+                        <h3 class="compliance-title">Provincial Standards</h3>
+                        <p class="compliance-description">
+                            Support for provincial workplace safety regulations across Canada including 
+                            Saskatchewan OHS, Alberta OHS, BC WorkSafeBC, and Quebec CNESST.
+                        </p>
+                        <ul class="compliance-list">
+                            <li>Multi-jurisdiction support</li>
+                            <li>Provincial regulation updates</li>
+                            <li>Region-specific protocols</li>
+                            <li>Local compliance tracking</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compliance-card">
+                        <span class="compliance-icon">✓</span>
+                        <h3 class="compliance-title">Blockchain Verification</h3>
+                        <p class="compliance-description">
+                            Immutable training certificates using blockchain technology. 
+                            Cryptographic proof of training completion that can't be forged.
+                        </p>
+                        <ul class="compliance-list">
+                            <li>Tamper-proof certificates</li>
+                            <li>Instant verification</li>
+                            <li>Permanent record storage</li>
+                            <li>Third-party validation</li>
+                            <li>Regulatory acceptance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="byollm-section" style="margin-top: 80px;">
+                    <div class="byollm-badge">Privacy by Design</div>
+                    <h3 style="font-family: 'Cinzel', serif; font-size: 28px; color: var(--deep-charcoal); margin-bottom: 20px;">
+                        Your Data Never Leaves Your Control
+                    </h3>
+                    <p style="font-size: 15px; color: var(--graphite); max-width: 700px; margin: 0 auto; line-height: 1.8;">
+                        Unlike traditional SaaS platforms, CopiousLMS doesn't process your data. 
+                        The BYOLLM architecture means you provide the AI infrastructure, we provide 
+                        the governance protocols. Your employee data, training records, and safety 
+                        information stay on YOUR systems, under YOUR control, meeting YOUR compliance requirements.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <div class="section-header" style="margin-bottom: 40px;">
+                    <div class="section-label">Security Standards</div>
+                    <h2 class="section-title">Built for Canadian Enterprise</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">PIPEDA Compliant</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Canadian</div>
+                        <div class="stat-label">Data Residency</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Complete</div>
+                        <div class="stat-label">Data Sovereignty</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Bank-Level</div>
+                        <div class="stat-label">Encryption</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CONTACT PAGE -->
+        <div id="contact" class="page">
+            <div class="product-hero">
+                <span class="product-icon-large">📞</span>
+                <h1 class="product-title">Strategic Opportunities</h1>
+                <p class="product-tagline">Licensing • Partnership • Custom Development • Investment</p>
+                <p class="product-intro">
+                    Connect with Shema K Solutions to explore framework licensing, 
+                    strategic partnerships, or custom AI governance solutions for your industry.
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Shema K Solutions Corp</h3>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Headquarters</div>
+                            <div class="info-value">
+                                Regina, Saskatchewan<br>
+                                Canada
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">General Inquiries</div>
+                            <div class="info-value">info@shemaksolutions.com</div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">K.I.N.G. Framework Licensing</div>
+                            <div class="info-value">licensing@shemaksolutions.com</div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">CopiousLMS Beta</div>
+                            <div class="info-value">beta@copiouslms.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form onsubmit="handleSubmit(event)">
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Company</label>
+                                <input type="text" class="form-input">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Interest</label>
+                                <select class="form-select">
+                                    <option value="">Select...</option>
+                                    <option value="copiouslms-beta">CopiousLMS Beta Program</option>
+                                    <option value="king-framework">K.I.N.G. Framework Licensing</option>
+                                    <option value="custom-deployment">Custom Deployment</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="security-compliance">Security & Compliance Questions</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Current AI Platform</label>
+                                <select class="form-select">
+                                    <option value="">Select...</option>
+                                    <option value="claude">Anthropic Claude</option>
+                                    <option value="gpt">OpenAI GPT</option>
+                                    <option value="gemini">Google Gemini</option>
+                                    <option value="grok">xAI Grok</option>
+                                    <option value="custom">Custom LLM</option>
+                                    <option value="evaluating">Evaluating Options</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Message *</label>
+                                <textarea class="form-textarea" placeholder="Tell us about your workplace safety challenges or partnership interests..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="form-submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page">
+            <div class="product-hero">
+                <span class="product-icon-large">🌾</span>
+                <h1 class="product-title">About Shema K Solutions</h1>
+                <p class="product-tagline">From Saskatchewan Fields to Silicon Valley Tech</p>
+                <p class="product-intro">
+                    Building AI that prevents workplace tragedies. Not because it's profitable. 
+                    Because every death is preventable, and training scarcity is a choice.
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-label">The Founder</div>
+                    <h2 class="section-title">Claudino Nelson</h2>
+                    <p class="section-description">
+                        CEO & Founder | Adopted from Haiti | Saskatchewan Farmer | Tech Entrepreneur
+                    </p>
+                </div>
+                
+                <div class="section-header">
+                    <div class="section-label">About Shema K Solutions Corp</div>
+                    <h2 class="section-title">AI Framework Development Company</h2>
+                    <p class="section-description">
+                        Founded in Saskatchewan, Canada, we develop proprietary AI governance frameworks 
+                        that solve real-world problems. Our K.I.N.G. Framework™ represents years of research 
+                        into making AI outputs reliable, compliant, and safe across any platform.
+                    </p>
+                </div>
+                
+                <div style="max-width: 800px; margin: 60px auto; font-size: 16px; line-height: 1.8; color: var(--deep-charcoal);">
+                    <p style="margin-bottom: 30px;">
+                        <strong style="color: var(--ancient-gold);">Our Origin:</strong> 
+                        Started with a simple question: Why do workplace deaths still happen when we have all the safety knowledge needed to prevent them?
+                    </p>
+                    <p style="margin-bottom: 30px;">
+                        <strong style="color: var(--ancient-gold);">Our Discovery:</strong> 
+                        AI could deliver perfect safety training, but it needed governance. So we built the K.I.N.G. Framework - 
+                        comprehensive protocols that ensure AI outputs are accurate, compliant, and actionable.
+                    </p>
+                    <p style="margin-bottom: 30px;">
+                        <strong style="color: var(--ancient-gold);">Our Vision:</strong> 
+                        CopiousLMS proves the framework works for safety. But the same technology could revolutionize 
+                        compliance, quality assurance, customer service, education, and more. We're building the governance 
+                        layer for the AI-powered economy.
+                    </p>
+                    <p style="font-size: 20px; color: var(--ancient-gold); text-align: center;">
+                        <strong>K.I.N.G. Framework™ - The future of AI governance.</strong>
+                    </p>
+                </div>
+                
+                <div class="section-header" style="margin-top: 100px;">
+                    <div class="section-label">The Mission</div>
+                    <h2 class="section-title">Training. Abundant. Simple.</h2>
+                    <p class="section-description">
+                        Every protocol, every line of code, every decision serves one purpose: 
+                        preventing workplace tragedies through abundant training.
+                    </p>
+                </div>
+                
+                <div class="stats-grid" style="margin-top: 60px;">
+                    <div class="stat-card">
+                        <div class="stat-value">2025</div>
+                        <div class="stat-label">Founded</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Complete</div>
+                        <div class="stat-label">Protocols Built</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">April 2026</div>
+                        <div class="stat-label">Full Launch</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">Lives to Save</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RESOURCES PAGE -->
+        <div id="resources" class="page">
+            <div class="product-hero">
+                <span class="product-icon-large">📚</span>
+                <h1 class="product-title">Resources</h1>
+                <p class="product-tagline">Technical Documentation & Insights</p>
+                <p class="product-intro">
+                    Deep dives into K.I.N.G. Framework architecture, BYOLLM implementation, 
+                    and the future of AI-powered workplace safety.
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-label">Available Resources</div>
+                    <h2 class="section-title">Learn More About Our Technology</h2>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 1000px; margin: 60px auto;">
+                    
+                    <!-- Resource Card -->
+                    <div style="background: linear-gradient(145deg, var(--ivory), var(--pearl)); border: 1px solid var(--ancient-gold); padding: 40px; transition: all 0.3s ease; cursor: pointer;">
+                        <span style="font-size: 32px; margin-bottom: 20px; display: block;">📄</span>
+                        <h3 style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--ancient-gold); margin-bottom: 15px;">
+                            K.I.N.G. Framework Overview
+                        </h3>
+                        <p style="font-size: 14px; color: var(--deep-charcoal); line-height: 1.8; margin-bottom: 20px;">
+                            Technical architecture of comprehensive safety protocols. How we achieve platform-agnostic 
+                            execution across Claude, GPT, Gemini, and Grok.
+                        </p>
+                        <span style="font-size: 12px; color: var(--ancient-gold); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+                            Download PDF
+                        </span>
+                    </div>
+                    
+                    <!-- Resource Card -->
+                    <div style="background: linear-gradient(145deg, var(--ivory), var(--pearl)); border: 1px solid var(--silver-mist); padding: 40px; transition: all 0.3s ease; cursor: pointer;">
+                        <span style="font-size: 32px; margin-bottom: 20px; display: block;">🔧</span>
+                        <h3 style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--ancient-gold); margin-bottom: 15px;">
+                            BYOLLM Implementation Guide
+                        </h3>
+                        <p style="font-size: 14px; color: var(--deep-charcoal); line-height: 1.8; margin-bottom: 20px;">
+                            How to deploy CopiousLMS on your existing AI infrastructure. Complete guide for 
+                            Claude, GPT, Gemini, and custom LLM integration.
+                        </p>
+                        <span style="font-size: 12px; color: var(--slate); text-transform: uppercase; letter-spacing: 1px;">
+                            Coming Soon
+                        </span>
+                    </div>
+                    
+                    <!-- Resource Card -->
+                    <div style="background: linear-gradient(145deg, var(--ivory), var(--pearl)); border: 1px solid var(--silver-mist); padding: 40px; transition: all 0.3s ease; cursor: pointer;">
+                        <span style="font-size: 32px; margin-bottom: 20px; display: block;">💰</span>
+                        <h3 style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--ancient-gold); margin-bottom: 15px;">
+                            The True Cost of Training Scarcity
+                        </h3>
+                        <p style="font-size: 14px; color: var(--deep-charcoal); line-height: 1.8; margin-bottom: 20px;">
+                            Economic analysis of workplace injuries. Why $171B annual cost could be prevented 
+                            with abundant, accessible training.
+                        </p>
+                        <span style="font-size: 12px; color: var(--slate); text-transform: uppercase; letter-spacing: 1px;">
+                            Coming Soon
+                        </span>
+                    </div>
+                    
+                    <!-- Resource Card -->
+                    <div style="background: linear-gradient(145deg, var(--ivory), var(--pearl)); border: 1px solid var(--silver-mist); padding: 40px; transition: all 0.3s ease; cursor: pointer;">
+                        <span style="font-size: 32px; margin-bottom: 20px; display: block;">🛡️</span>
+                        <h3 style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--ancient-gold); margin-bottom: 15px;">
+                            40-Point Quality System
+                        </h3>
+                        <p style="font-size: 14px; color: var(--deep-charcoal); line-height: 1.8; margin-bottom: 20px;">
+                            How we ensure every AI output meets safety standards. Accuracy, compliance, 
+                            completeness, and mission alignment verification.
+                        </p>
+                        <span style="font-size: 12px; color: var(--slate); text-transform: uppercase; letter-spacing: 1px;">
+                            Coming Soon
+                        </span>
+                    </div>
+                    
+                </div>
+                
+                <div style="text-align: center; margin-top: 80px; padding: 40px; background: linear-gradient(135deg, var(--ivory), var(--pearl)); border: 1px solid var(--ancient-gold);">
+                    <h3 style="font-family: 'Cinzel', serif; font-size: 24px; color: var(--ancient-gold); margin-bottom: 20px;">
+                        Request Custom Documentation
+                    </h3>
+                    <p style="font-size: 15px; color: var(--deep-charcoal); margin-bottom: 30px;">
+                        Need specific technical details for integration or partnership discussions?
+                    </p>
+                    <button class="cta-btn" onclick="navigateTo('contact')">Contact Us</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Elite Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Shema K Solutions Corp</h4>
+                <p>
+                    Creator of K.I.N.G. Framework™ - comprehensive AI governance protocols 
+                    powering CopiousLMS to prevent workplace deaths.
+                </p>
+                <div class="footer-tagline">Training. Abundant. Simple. <span class="crown-inline">👑</span></div>
+            </div>
+            
+            <div class="footer-section">
+                <h5>Technology</h5>
+                <ul class="footer-links">
+                    <li><a onclick="navigateTo('framework')">K.I.N.G. Framework™</a></li>
+                    <li><a onclick="navigateTo('security')">Security & Compliance</a></li>
+                    <li><a onclick="navigateTo('resources')">Resources</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h5>Product</h5>
+                <ul class="footer-links">
+                    <li><a onclick="navigateTo('copiouslms')">CopiousLMS Platform</a></li>
+                    <li><a onclick="navigateTo('casestudies')">Case Studies</a></li>
+                    <li><a onclick="navigateTo('contact')">Beta Program</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h5>Company</h5>
+                <ul class="footer-links">
+                    <li><a onclick="navigateTo('about')">About</a></li>
+                    <li><a onclick="navigateTo('contact')">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Shema K Solutions Corp | Regina, Saskatchewan, Canada</p>
+        </div>
+    </footer>
+    
+    <!-- Modal -->
+    <div id="enterpriseModal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Message Received</h2>
+            <p class="modal-text">
+                Thank you for your interest in K.I.N.G. Framework and CopiousLMS. 
+                Our team will contact you within 24 hours to discuss your requirements.
+            </p>
+            <button class="modal-close" onclick="closeModal()">Continue</button>
+        </div>
+    </div>
+    
+    <script>
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            if (event && event.target && event.target.classList && event.target.classList.contains('nav-link')) {
+                event.target.classList.add('active');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            try {
+                window.location.hash = pageId;
+            } catch (e) {}
+        }
+        
+        function openModal() {
+            const modal = document.getElementById('enterpriseModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('enterpriseModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            openModal();
+            event.target.reset();
+        }
+        
+        // Live Demo Function
+        function runDemo() {
+            const input = document.getElementById('demoInput');
+            const output = document.getElementById('demoOutput');
+            const question = input.value.trim();
+            
+            if (!question) {
+                alert('Please enter a safety question');
+                return;
+            }
+            
+            // Simulate protocol activation
+            const protocols = [
+                'Safety Analysis',
+                'Hazard Detection',
+                'OSHA Compliance',
+                'PPE Requirements',
+                'Emergency Response',
+                'Documentation'
+            ];
+            
+            const protocolBadges = document.getElementById('protocolBadges');
+            protocolBadges.innerHTML = '';
+            protocols.forEach(protocol => {
+                const badge = document.createElement('span');
+                badge.className = 'demo-protocol-badge';
+                badge.textContent = protocol;
+                protocolBadges.appendChild(badge);
+            });
+            
+            // Simulate execution time
+            const time = Math.floor(Math.random() * 100) + 200;
+            document.getElementById('executionTime').textContent = time + 'ms';
+            
+            // Generate safety guidance based on input
+            let guidance = '';
+            if (question.toLowerCase().includes('confined space')) {
+                guidance = `<strong>Critical Safety Protocols Activated:</strong><br><br>
+                1. <strong>Atmospheric Testing Required:</strong> Test oxygen (19.5-23.5%), flammable gases (< 10% LEL), and toxic substances before entry.<br><br>
+                2. <strong>Entry Permit System:</strong> Complete hot work permit and confined space entry authorization. Verify authorized entrant training.<br><br>
+                3. <strong>Continuous Monitoring:</strong> Maintain atmospheric monitoring throughout entry. Post attendant at entry point.<br><br>
+                4. <strong>Ventilation:</strong> Establish forced air ventilation. Minimum 6 air changes per hour.<br><br>
+                5. <strong>Emergency Equipment:</strong> Have rescue equipment ready. Ensure rescue team on standby.<br><br>
+                <em>Regulatory Compliance: OSHA 29 CFR 1910.146 | Canadian CSA Z1006</em>`;
+            } else if (question.toLowerCase().includes('fall') || question.toLowerCase().includes('height')) {
+                guidance = `<strong>Fall Protection Protocols:</strong><br><br>
+                1. <strong>Work at Height Assessment:</strong> Any work above 6 feet (2m) requires fall protection.<br><br>
+                2. <strong>Hierarchy of Controls:</strong> Eliminate risk → Guardrails → Safety nets → Personal fall arrest systems.<br><br>
+                3. <strong>Equipment Inspection:</strong> Daily inspection of harness, lanyard, anchor points. Document all inspections.<br><br>
+                4. <strong>Anchorage Requirements:</strong> Minimum 5,000 lbs (22 kN) capacity per attached worker.<br><br>
+                5. <strong>Rescue Plan:</strong> Develop site-specific rescue procedures. 6-minute maximum suspension trauma window.<br><br>
+                <em>Regulatory Compliance: OSHA 29 CFR 1926.501 | Canadian CSA Z259</em>`;
+            } else {
+                guidance = `<strong>General Safety Protocols Applied:</strong><br><br>
+                Based on your inquiry, K.I.N.G. Framework has analyzed the potential hazards and activated relevant safety protocols. 
+                For specific guidance on "${question}", our system recommends:<br><br>
+                1. Conduct thorough hazard assessment before beginning work<br>
+                2. Review applicable safety procedures and regulations<br>
+                3. Ensure all required PPE is available and properly fitted<br>
+                4. Verify worker competency and training certification<br>
+                5. Establish emergency response procedures<br>
+                6. Document all safety measures taken<br><br>
+                <em>This demonstration shows protocol coordination. Full CopiousLMS deployment provides detailed, 
+                job-specific guidance with interactive scenarios and instant certification.</em>`;
+            }
+            
+            document.getElementById('safetyGuidance').innerHTML = guidance;
+            output.classList.add('active');
+            
+            // Scroll to output
+            output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Handle initial page load
+        document.addEventListener('DOMContentLoaded', function() {
+            let hash = 'home';
+            try {
+                hash = window.location.hash.slice(1) || 'home';
+            } catch (e) {
+                hash = 'home';
+            }
+            
+            if (!document.getElementById(hash)) {
+                hash = 'home';
+            }
+            
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            const initialPage = document.getElementById(hash);
+            if (initialPage) {
+                initialPage.classList.add('active');
+            }
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                const linkText = link.textContent.toLowerCase();
+                const pageNames = {
+                    'home': 'home',
+                    'about': 'about',
+                    'framework': 'framework',
+                    'copious': 'copiouslms',
+                    'case studies': 'casestudies',
+                    'security': 'security',
+                    'resources': 'resources',
+                    'contact': 'contact'
+                };
+                
+                for (let [key, value] of Object.entries(pageNames)) {
+                    if (linkText.includes(key) && hash === value) {
+                        link.classList.add('active');
+                    }
+                }
+            });
+            
+            const modal = document.getElementById('enterpriseModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
+            }
+        });
+        
+        // Handle hash changes
+        window.addEventListener('hashchange', function() {
+            try {
+                const hash = window.location.hash.slice(1) || 'home';
+                if (document.getElementById(hash)) {
+                    document.querySelectorAll('.page').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    const targetPage = document.getElementById(hash);
+                    if (targetPage) {
+                        targetPage.classList.add('active');
+                    }
+                    
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        const linkText = link.textContent.toLowerCase();
+                        const pageNames = {
+                            'home': 'home',
+                            'about': 'about',
+                            'framework': 'framework',
+                            'copious': 'copiouslms',
+                            'case studies': 'casestudies',
+                            'security': 'security',
+                            'resources': 'resources',
+                            'contact': 'contact'
+                        };
+                        
+                        for (let [key, value] of Object.entries(pageNames)) {
+                            if (linkText.includes(key) && hash === value) {
+                                link.classList.add('active');
+                            }
+                        }
+                    });
+                }
+            } catch (e) {}
+        });
+    </script>
+</body>
+</html>
